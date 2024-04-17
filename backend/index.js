@@ -12,9 +12,6 @@ app.get("/data", async (req, res) => {
     if (Object.keys(req.query).length === 0) {
       mydata = await CycleStatus.find();
     } else {
-      console.log("ELSE");
-      console.log(req.query);
-      //Do it later on
       mydata = await CycleStatus.find({ts: { $gt: req.query.st, $lt: req.query.et }})
    }
     res.json(mydata);
